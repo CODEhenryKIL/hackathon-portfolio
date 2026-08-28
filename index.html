@@ -1540,9 +1540,9 @@
       <div class="nav-links">
         <a class="nav-link is-active" href="#about" data-section="about" aria-current="location">About</a>
         <a class="nav-link" href="#featured" data-section="featured">Featured</a>
-        <a class="nav-link" href="#experience" data-section="experience">Experience</a>
         <a class="nav-link" href="#activities" data-section="activities">Activities</a>
         <a class="nav-link" href="#education" data-section="education">Education</a>
+        <a class="nav-link" href="#experience" data-section="experience">Experience</a>
       </div>
     </div>
   </nav>
@@ -1866,7 +1866,7 @@
             <h2 class="section-title" id="experience-heading">Experience Log</h2>
             <p class="section-description">카드에서 핵심을 훑고, 선택한 경험의 전체 기록을 중앙 상세 화면에서 이어서 봅니다.</p>
           </div>
-          <span class="section-index">02 / 04</span>
+          <span class="section-index">04 / 04</span>
         </div>
 
         <div class="experience-grid" id="experience-grid">
@@ -1980,7 +1980,7 @@
             <h2 class="section-title" id="activities-heading">Leadership &amp; Activities</h2>
             <p class="section-description">조직을 맡아 운영한 경험과 대외 활동·해커톤 참가 기록을 역할과 기여 중심으로 정리했습니다.</p>
           </div>
-          <span class="section-index">03 / 04</span>
+          <span class="section-index">02 / 04</span>
         </div>
 
         <ol class="resume-list">
@@ -2077,7 +2077,7 @@
             <h2 class="section-title" id="education-heading">Education</h2>
             <p class="section-description">학위 과정과 창업·투자 교육을 이수 내용 중심으로 정리했습니다.</p>
           </div>
-          <span class="section-index">04 / 04</span>
+          <span class="section-index">03 / 04</span>
         </div>
 
         <ol class="resume-list">
@@ -2132,6 +2132,10 @@
   <script src="experience-log-data.js"></script>
   <script>
     (() => {
+      const experienceSection = document.querySelector('#experience');
+      const educationSection = document.querySelector('#education');
+      if (experienceSection && educationSection) educationSection.after(experienceSection);
+
       const featuredCards = [...document.querySelectorAll('[data-featured]')];
       const featuredCurrent = document.querySelector('#featured-current');
       const featuredTotal = document.querySelector('#featured-total');
@@ -2442,7 +2446,7 @@
 
       const navigationLinks = [...document.querySelectorAll('.nav-link')];
       const navigationContainer = document.querySelector('.nav-links');
-      const observedSections = ['about', 'featured', 'experience', 'activities', 'education']
+      const observedSections = ['about', 'featured', 'activities', 'education', 'experience']
         .map((id) => document.getElementById(id))
         .filter(Boolean);
 
