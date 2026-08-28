@@ -1,0 +1,2115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 연구, 제품 검증, 사업 운영 경험을 정리한 길민규의 창업 해커톤 포트폴리오">
+  <title>Kil Mingyu — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d110e;
+      --surface: #111713;
+      --surface-strong: #171f19;
+      --band: #080b09;
+      --text: #f1f5f2;
+      --body: #b3bcb6;
+      --muted: #7a847d;
+      --line: #29322c;
+      --line-strong: #3a463e;
+      --accent: #43e785;
+      --accent-soft: rgba(67, 231, 133, 0.1);
+      --content: 1000px;
+      --nav-height: 62px;
+      --sans: "Gothic A1", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 28px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    summary {
+      font: inherit;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+      background: var(--accent);
+      color: #07120b;
+      font: 600 12px/1 var(--mono);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-nav {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto;
+      height: var(--nav-height);
+      border-bottom: 1px solid var(--line);
+      background: rgba(13, 17, 14, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      width: min(var(--content), calc(100% - 40px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+      font: 600 12px/1 var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .wordmark-mark {
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      color: var(--muted);
+      font: 500 10px/1 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color 160ms ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 160ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--text);
+    }
+
+    .nav-link.is-active::after {
+      transform: scaleX(1);
+    }
+
+    main {
+      padding-top: var(--nav-height);
+    }
+
+    .section-inner {
+      width: min(var(--content), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow,
+    .meta-label,
+    .section-index,
+    .chip,
+    .control,
+    .page-status,
+    .fact-period,
+    .card-index,
+    .footer-meta {
+      font-family: var(--mono);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .profile {
+      padding: 68px 0 74px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 294px minmax(0, 1fr);
+      gap: 64px;
+      align-items: start;
+    }
+
+    .portrait {
+      position: relative;
+      display: block;
+      width: 190px;
+      aspect-ratio: 1;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: #b8c9b8;
+    }
+
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: auto;
+    }
+
+    .profile-name {
+      margin: 24px 0 3px;
+      font-size: 24px;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .profile-role {
+      margin: 0 0 22px;
+      color: var(--body);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 10px;
+      color: var(--body);
+      font-size: 12px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .award-heading {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px 0 10px;
+      color: var(--muted);
+      font: 500 9px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .award-list {
+      display: grid;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .award-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .award-year {
+      color: var(--accent);
+      font: 500 9px/1.5 var(--mono);
+    }
+
+    .award-title {
+      display: block;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .award-desc {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.55;
+    }
+
+    .profile-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .small-link,
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line-strong);
+      color: var(--body);
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    }
+
+    .small-link {
+      padding: 10px 11px;
+      font: 500 9px/1 var(--mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .small-link:hover,
+    .text-link:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+    }
+
+    .profile-main {
+      min-width: 0;
+    }
+
+    .profile-title {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(30px, 2.8vw, 36px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.04em;
+    }
+
+    .profile-title em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .profile-summary {
+      max-width: 610px;
+      margin: 24px 0 0;
+      color: var(--body);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      margin-top: 40px;
+    }
+
+    .fact-group + .fact-group {
+      margin-top: 36px;
+    }
+
+    .fact-heading {
+      margin: 0 0 18px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line-strong);
+      color: var(--text);
+      font: 600 11px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fact-list {
+      display: grid;
+      gap: 17px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fact-title {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .fact-desc {
+      display: block;
+      color: var(--body);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .fact-highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .fact-period {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.03em;
+    }
+
+    .content-section {
+      padding: 74px 0 80px;
+    }
+
+    .section-heading-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading-group {
+      max-width: 650px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(27px, 3.2vw, 36px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.035em;
+    }
+
+    .section-description {
+      margin: 11px 0 0;
+      color: var(--body);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .section-index {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .featured {
+      border-bottom: 1px solid var(--line);
+      padding-top: 60px;
+      padding-bottom: 66px;
+    }
+
+    .carousel-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      margin-bottom: 0;
+    }
+
+    .control {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--body);
+      cursor: pointer;
+      font-size: 14px;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    }
+
+    .control:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    .control:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .page-status {
+      min-width: 66px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .page-status strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .featured-stage {
+      position: relative;
+      max-width: 744px;
+      margin: 0 auto;
+      isolation: isolate;
+    }
+
+    .featured-stage::before,
+    .featured-stage::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 44px;
+      bottom: 30px;
+      width: 68%;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      opacity: 0.46;
+      pointer-events: none;
+    }
+
+    .featured-stage::before {
+      left: -54px;
+    }
+
+    .featured-stage::after {
+      right: -54px;
+    }
+
+    .featured-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(350px, 1.08fr);
+      min-height: 390px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .featured-card[hidden] {
+      display: none;
+    }
+
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+    }
+
+    .card-index {
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 23px;
+    }
+
+    .chip {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .featured-title {
+      margin: 18px 0 13px;
+      font-size: 27px;
+      line-height: 1.45;
+      letter-spacing: -0.03em;
+    }
+
+    .featured-problem {
+      margin: 0;
+      color: var(--body);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .result-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 27px 0 30px;
+      padding: 19px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .result-value {
+      display: block;
+      color: var(--text);
+      font: 500 20px/1.3 var(--mono);
+    }
+
+    .result-label {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .text-link {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 11px 14px;
+      font: 500 10px/1 var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .evidence-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      min-height: 390px;
+      overflow: hidden;
+      border-left: 1px solid var(--line-strong);
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px),
+        var(--band);
+      background-size: 56px 56px;
+    }
+
+    .evidence-block {
+      z-index: 1;
+      padding: 15px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface-strong);
+    }
+
+    .evidence-block strong {
+      display: block;
+      color: var(--text);
+      font: 500 12px/1.5 var(--mono);
+    }
+
+    .evidence-block span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .evidence-block.a {
+      grid-area: 2 / 2 / 4 / 5;
+    }
+
+    .evidence-block.b {
+      grid-area: 3 / 5 / 6 / 8;
+    }
+
+    .evidence-line {
+      position: absolute;
+      z-index: 0;
+      top: 41%;
+      left: 29%;
+      width: 42%;
+      height: 1px;
+      background: var(--accent);
+      transform: rotate(24deg);
+      transform-origin: left;
+    }
+
+    .evidence-note {
+      position: absolute;
+      right: 16px;
+      bottom: 14px;
+      color: var(--muted);
+      font: 500 8px/1.4 var(--mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .blueprint {
+      background: var(--band);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .blueprint .content-section {
+      padding-top: 70px;
+      padding-bottom: 72px;
+    }
+
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .blueprint-card {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      min-height: 200px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg);
+    }
+
+    .blueprint-no {
+      display: grid;
+      place-items: start center;
+      padding-top: 25px;
+      border-right: 1px solid var(--line);
+      color: var(--accent);
+      font: 500 10px/1 var(--mono);
+    }
+
+    .blueprint-content {
+      display: flex;
+      flex-direction: column;
+      padding: 25px 27px 23px;
+    }
+
+    .blueprint-type {
+      color: var(--muted);
+      font: 500 9px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .blueprint-title {
+      margin: 13px 0 10px;
+      font-size: 19px;
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+    }
+
+    .blueprint-desc {
+      margin: 0;
+      color: var(--body);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .blueprint-content .text-link {
+      margin-top: auto;
+      border: 0;
+      padding: 17px 0 0;
+      color: var(--accent);
+    }
+
+    .experience {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .experience-card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      overflow: hidden;
+      transition: border-color 180ms ease, background 180ms ease;
+    }
+
+    .experience-card[hidden] {
+      display: none;
+    }
+
+    .experience-card.is-targeted {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .experience-card:hover {
+      border-color: var(--line-strong);
+    }
+
+    .experience-trigger {
+      position: relative;
+      display: grid;
+      grid-template-columns: 52px 1fr 24px;
+      gap: 17px;
+      align-items: start;
+      width: 100%;
+      min-height: 124px;
+      padding: 20px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .experience-trigger::after {
+      content: "+";
+      color: var(--muted);
+      font: 400 18px/1 var(--mono);
+      text-align: right;
+      transition: color 160ms ease;
+    }
+
+    .experience-trigger:hover::after,
+    .experience-trigger:focus-visible::after {
+      color: var(--accent);
+    }
+
+    .experience-no {
+      color: var(--muted);
+      font: 500 10px/1.4 var(--mono);
+    }
+
+    .experience-title {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .experience-meta {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font: 400 9px/1.5 var(--mono);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .experience-preview {
+      display: block;
+      margin-top: 11px;
+      color: var(--body);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .experience-modal {
+      width: min(900px, calc(100vw - 48px));
+      height: min(86dvh, 860px);
+      max-width: none;
+      max-height: none;
+      margin: auto;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .experience-modal::backdrop {
+      background: rgba(4, 7, 5, 0.86);
+      backdrop-filter: blur(3px);
+    }
+
+    .experience-modal[open] {
+      display: block;
+    }
+
+    .modal-shell {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      height: 100%;
+    }
+
+    .modal-header {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 44px;
+      gap: 16px;
+      align-items: start;
+      padding: 24px 30px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .modal-index {
+      padding-top: 6px;
+      color: var(--accent);
+      font: 500 11px/1.4 var(--mono);
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.45;
+      letter-spacing: -0.03em;
+    }
+
+    .modal-card-meta {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font: 500 9px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .modal-close {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--body);
+      cursor: pointer;
+      font: 400 20px/1 var(--mono);
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .modal-scroll {
+      min-height: 0;
+      padding: 28px 30px 38px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-color: var(--line-strong) var(--surface);
+    }
+
+    .modal-summary {
+      margin: 0 0 28px;
+      padding: 0 0 24px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.75;
+    }
+
+    .modal-source + .modal-source {
+      margin-top: 42px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .modal-source-label {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--accent);
+      font: 500 9px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .modal-source-title {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-meta-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr 1.7fr;
+      gap: 1px;
+      margin: 20px 0 28px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .modal-meta-item {
+      min-width: 0;
+      padding: 13px 14px;
+      background: var(--band);
+    }
+
+    .modal-meta-item dt {
+      margin: 0 0 5px;
+      color: var(--muted);
+      font: 500 8px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .modal-meta-item dd {
+      margin: 0;
+      color: var(--body);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .modal-section-heading {
+      margin: 28px 0 13px;
+      color: var(--muted);
+      font: 500 9px/1.4 var(--mono);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .modal-story {
+      max-width: 720px;
+    }
+
+    .modal-story p {
+      margin: 0 0 13px;
+      color: var(--body);
+      font-size: 14px;
+      line-height: 1.9;
+      overflow-wrap: break-word;
+    }
+
+    .modal-story p:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .modal-chip-list li {
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      color: var(--body);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .modal-chip-list.metrics li {
+      border-color: var(--line-strong);
+      color: var(--text);
+    }
+
+    .modal-footer {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 30px;
+      border-top: 1px solid var(--line);
+      background: var(--band);
+    }
+
+    .modal-nav-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 44px;
+      padding: 0 13px;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--body);
+      cursor: pointer;
+      font: 500 10px/1 var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .modal-nav-button.next {
+      justify-self: end;
+    }
+
+    .modal-nav-button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .modal-nav-button:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .modal-status {
+      color: var(--muted);
+      font: 500 10px/1 var(--mono);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .page-dot {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: 500 10px/1 var(--mono);
+    }
+
+    .page-dot:hover,
+    .page-dot.is-active {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .page-dot.is-active {
+      background: var(--accent-soft);
+    }
+
+    footer {
+      background: var(--band);
+    }
+
+    .footer-inner {
+      width: min(var(--content), calc(100% - 40px));
+      min-height: 92px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .footer-meta {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+      .profile-grid {
+        grid-template-columns: 240px 1fr;
+        gap: 38px;
+      }
+
+      .facts-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-top: 48px;
+      }
+
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-panel {
+        min-height: 330px;
+        border-top: 1px solid var(--line-strong);
+        border-left: 0;
+      }
+
+      .blueprint-grid,
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --nav-height: 56px;
+      }
+
+      body {
+        font-size: 14px;
+      }
+
+      .nav-inner,
+      .section-inner,
+      .footer-inner {
+        width: min(100% - 28px, var(--content));
+      }
+
+      .wordmark span:last-child {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 19px;
+      }
+
+      .profile,
+      .content-section {
+        padding-top: 60px;
+        padding-bottom: 66px;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-aside {
+        display: grid;
+        grid-template-columns: 128px minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .portrait {
+        width: 128px;
+        grid-row: span 3;
+        padding: 0;
+      }
+
+      .profile-name {
+        margin-top: 0;
+        font-size: 21px;
+      }
+
+      .award-section,
+      .profile-links {
+        grid-column: 1 / -1;
+      }
+
+      .award-section,
+      .profile-links {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .contact-row {
+        grid-template-columns: 58px minmax(0, 1fr);
+        font-size: 11px;
+      }
+
+      .profile-main {
+        margin-top: 14px;
+      }
+
+      .profile-title {
+        font-size: 31px;
+      }
+
+      .facts-grid {
+        gap: 30px;
+      }
+
+      .section-heading-row {
+        align-items: start;
+        margin-bottom: 25px;
+      }
+
+      .section-index {
+        padding-top: 8px;
+      }
+
+      .featured-copy {
+        padding: 28px 22px;
+      }
+
+      .featured-stage::before,
+      .featured-stage::after {
+        display: none;
+      }
+
+      .featured-title {
+        font-size: 22px;
+      }
+
+      .evidence-panel {
+        min-height: 270px;
+        background-size: 42px 42px;
+      }
+
+      .result-row {
+        grid-template-columns: 1fr;
+      }
+
+      .blueprint-card {
+        grid-template-columns: 48px 1fr;
+      }
+
+      .blueprint-content {
+        padding: 22px 20px;
+      }
+
+      .experience-trigger {
+        grid-template-columns: 36px 1fr 18px;
+        gap: 11px;
+        padding: 19px 16px;
+      }
+
+      .experience-modal {
+        width: calc(100vw - 20px);
+        height: calc(100dvh - 20px);
+      }
+
+      .modal-header {
+        grid-template-columns: 34px minmax(0, 1fr) 40px;
+        gap: 10px;
+        padding: 17px 17px 15px;
+      }
+
+      .modal-title {
+        font-size: 20px;
+      }
+
+      .modal-close {
+        width: 40px;
+        height: 40px;
+      }
+
+      .modal-scroll {
+        padding: 22px 18px 30px;
+      }
+
+      .modal-summary {
+        font-size: 14px;
+      }
+
+      .modal-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-story p {
+        font-size: 13px;
+        line-height: 1.85;
+      }
+
+      .modal-footer {
+        gap: 8px;
+        padding: 10px 12px;
+      }
+
+      .modal-nav-button {
+        min-width: 44px;
+        padding: 0 10px;
+      }
+
+      .modal-nav-label {
+        display: none;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 22px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <nav class="site-nav" aria-label="주요 메뉴">
+    <div class="nav-inner">
+      <a class="wordmark" href="#about" aria-label="프로필로 이동">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span>Kil Mingyu / Portfolio</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link is-active" href="#about" data-section="about" aria-current="location">About</a>
+        <a class="nav-link" href="#featured" data-section="featured">Featured</a>
+        <a class="nav-link" href="#blueprint" data-section="blueprint">Project Map</a>
+        <a class="nav-link" href="#experience" data-section="experience">Experience</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="profile" id="about">
+      <div class="section-inner profile-grid">
+        <aside class="profile-aside" aria-label="프로필 정보">
+          <div class="portrait">
+            <img src="profile-pixel-art-sage.png" alt="길민규 픽셀 아트 프로필" width="1254" height="1254">
+          </div>
+          <div>
+            <p class="profile-name">길민규</p>
+            <p class="profile-role">AI Problem Solver · Product Builder</p>
+            <ul class="contact-list">
+              <li class="contact-row"><span class="meta-label">Based</span><span>Seoul, Korea</span></li>
+              <li class="contact-row"><span class="meta-label">Current</span><span>해바캄 · AI응용학과 연구실</span></li>
+              <li class="contact-row"><span class="meta-label">Focus</span><span>AI Product · Research · Business</span></li>
+            </ul>
+          </div>
+          <section class="award-section" aria-labelledby="award-heading">
+            <div class="award-heading" id="award-heading"><span>Awards</span><span>04 Selected</span></div>
+            <ol class="award-list">
+              <li class="award-item"><span class="award-year">2023</span><span><span class="award-title">KDB 산업은행 회장상</span><span class="award-desc">20개 학교 대표팀 중 1위</span></span></li>
+              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">현대자동차 대표이사상</span><span class="award-desc">차량 AI 특허 23,767건 → 유효특허 891건</span></span></li>
+              <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">AI TOP 100 파이널리스트</span><span class="award-desc">카카오임팩트 · 약 3,000명 중 상위 100명</span></span></li>
+              <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">DB보험금융공모전 입선</span><span class="award-desc">975개 팀 중 공동 39위</span></span></li>
+            </ol>
+          </section>
+          <div class="profile-links">
+            <a class="small-link" href="#featured"><span>Projects</span><span>↘</span></a>
+            <a class="small-link" href="#experience"><span>Archive</span><span>↘</span></a>
+          </div>
+        </aside>
+
+        <div class="profile-main">
+          <p class="eyebrow">About / 2026 Hackathon Portfolio</p>
+          <h1 class="profile-title">낯선 문제를 빠르게 배우고,<br><em>검증 가능한 결과</em>로 연결합니다.</h1>
+          <p class="profile-summary">경영학과 컴퓨터공학을 함께 공부하며 AI 연구, 제품 검증, 사업 운영을 넘나들어 왔습니다. 차량 AI 특허 23,767건 분석, DCASE 오디오 AI 참가자 기준 8위, 해충 종 분류 AI PoC, 온라인 커머스 <span class="fact-highlight">누적 매출 1억 원 이상</span>을 만들었습니다.</p>
+
+          <div class="facts-grid">
+            <div>
+              <section class="fact-group" aria-labelledby="education-heading">
+                <h2 class="fact-heading" id="education-heading">Education</h2>
+                <ul class="fact-list">
+                  <li>
+                    <span class="fact-title">서울과학기술대학교</span>
+                    <span class="fact-desc">벤처경영학과 · 컴퓨터공학과 복수전공<br><span class="fact-highlight">GPA 4.26 / 4.50</span></span>
+                    <span class="fact-period">2022.03 — 2027.02 예정</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">국민대학교 초기투자 심사역 양성과정</span>
+                    <span class="fact-desc">K-TOPIK 기반 투자심사보고서 작성·발표, 전 과정 수료</span>
+                    <span class="fact-period">2025.08</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">KDB 스타트업 프로그램</span>
+                    <span class="fact-desc">고객 발굴·문제 정의·가설 수립·인터뷰 검증 및 사업모델 피벗 교육<br>20개 학교 대표팀 중 1위 · KDB 산업은행 회장상</span>
+                    <span class="fact-period">2023.09 — 2023.12</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">2025 KDB STARTUP VILLAGE CHALLENGE</span>
+                    <span class="fact-desc">스타트업 투자·지분 구조·주주간계약·초기 고객 확보 교육<br>ARA 시연용 MVP·IR 제작 · NextRise 데모데이 발표</span>
+                    <span class="fact-period">2025.05 — 2025.06</span>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="fact-group" aria-labelledby="career-heading">
+                <h2 class="fact-heading" id="career-heading">Experience</h2>
+                <ul class="fact-list">
+                  <li>
+                    <span class="fact-title">주식회사 해바캄 · AI Problem Solver</span>
+                    <span class="fact-desc">해충 종 분류 AI PoC, 사내 AX, AI 특허 출원 지원</span>
+                    <span class="fact-period">2025.12 — PRESENT</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">AI응용학과 연구실 · 학부연구생</span>
+                    <span class="fact-desc">DCASE 2026 Task 1 오디오 AI 개인 연구</span>
+                    <span class="fact-period">2026.01 — PRESENT</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">개인 구매대행 사업 · 대표</span>
+                    <span class="fact-desc">10개 오픈마켓 운영 · 누적 매출 1억 5,000만 원</span>
+                    <span class="fact-period">약 3년 10개월 · 2020 — 2023</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">주식회사 세경인프라</span>
+                    <span class="fact-desc">공구 상품 입출고 · 재고 및 전표 관리</span>
+                    <span class="fact-period">2020.06 — 2021.03</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">주식회사 우앤이</span>
+                    <span class="fact-desc">ERP · 부품 발주·검수 · 매장 운영</span>
+                    <span class="fact-period">2017.03 — 2018.07</span>
+                  </li>
+                </ul>
+              </section>
+            </div>
+
+            <div>
+              <section class="fact-group" aria-labelledby="skills-heading">
+                <h2 class="fact-heading" id="skills-heading">Skills</h2>
+                <ul class="fact-list">
+                  <li>
+                    <span class="fact-title">AI · Data</span>
+                    <span class="fact-desc">오디오 분류 · 데이터 전처리 · 실험 설계 · 앙상블 · RankNet · XBRL · 백테스트</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">Product · Business</span>
+                    <span class="fact-desc">고객 인터뷰 · 문제 정의 · 시장·경쟁 분석 · MVP · IP 전략 · 커머스 운영</span>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="fact-group" aria-labelledby="certificate-heading">
+                <h2 class="fact-heading" id="certificate-heading">Certificates</h2>
+                <ul class="fact-list">
+                  <li>
+                    <span class="fact-title">ADsP · SQLD</span>
+                    <span class="fact-desc">한국데이터산업진흥원</span>
+                    <span class="fact-period">2026.03</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">전산세무 2급 · 전산회계 1급</span>
+                    <span class="fact-desc">한국세무사회</span>
+                    <span class="fact-period">2015.09 — 2016.09</span>
+                  </li>
+                  <li>
+                    <span class="fact-title">컴퓨터활용능력 2급</span>
+                    <span class="fact-desc">대한상공회의소</span>
+                    <span class="fact-period">2015.09</span>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="content-section featured" id="featured" aria-labelledby="featured-heading">
+      <div class="section-inner">
+        <div class="section-heading-row">
+          <div class="section-heading-group">
+            <p class="eyebrow">Selected Case Studies</p>
+            <h2 class="section-title" id="featured-heading">Featured Projects</h2>
+            <p class="section-description">대표 경험 하나씩 살펴보고, 전체 기록의 해당 항목으로 바로 이동합니다.</p>
+          </div>
+          <div class="carousel-toolbar" role="group" aria-label="대표 프로젝트 탐색">
+            <button class="control" id="featured-prev" type="button" aria-label="이전 프로젝트">←</button>
+            <span class="page-status"><strong id="featured-current">01</strong> / <span id="featured-total">03</span></span>
+            <button class="control" id="featured-next" type="button" aria-label="다음 프로젝트">→</button>
+          </div>
+        </div>
+
+        <div class="featured-stage" aria-live="polite">
+          <article class="featured-card" data-featured="0">
+            <div class="featured-copy">
+              <span class="card-index">Case 01 · Audio AI Research</span>
+              <div class="chip-row"><span class="chip">Python</span><span class="chip">Experiment</span><span class="chip">Codex</span></div>
+              <h3 class="featured-title">DCASE 2026 오디오 AI 분류</h3>
+              <p class="featured-problem">5개 상위·23개 하위 클래스의 환경음을 분류하기 위해 논문 탐색부터 학습·평가 자동화까지 직접 설계했습니다. 78회 실험을 기록하며 성능을 반복 개선했습니다.</p>
+              <div class="result-row">
+                <div><span class="result-value">78회</span><span class="result-label">학습·평가 실험</span></div>
+                <div><span class="result-value">8위</span><span class="result-label">베이스라인 제외 참가자 기준</span></div>
+              </div>
+              <a class="text-link" href="#experience-01" data-jump="experience-01"><span>View full experience</span><span>↘</span></a>
+            </div>
+            <div class="evidence-panel" aria-label="DCASE 연구 지표">
+              <div class="evidence-block a"><strong>DATA / PIPELINE</strong><span>공식 데이터 10,956건·33,829건<br>외부 증강 5,150건</span></div>
+              <div class="evidence-block b"><strong>OFFICIAL RESULT</strong><span>4개 시스템 제출<br>공식 hF 0.692</span></div>
+              <span class="evidence-line" aria-hidden="true"></span>
+              <span class="evidence-note">AI-assisted research loop</span>
+            </div>
+          </article>
+
+          <article class="featured-card" data-featured="1" hidden>
+            <div class="featured-copy">
+              <span class="card-index">Case 02 · AI Product PoC</span>
+              <div class="chip-row"><span class="chip">Audio AI</span><span class="chip">PoC</span><span class="chip">AX</span></div>
+              <h3 class="featured-title">해충 종 분류 AI와 사내 AX</h3>
+              <p class="featured-problem">스마트 포충기의 AI 가능성을 검증하고, 반복되던 자사몰 유지보수 업무를 디자이너가 직접 처리할 수 있는 작업 흐름으로 바꿨습니다.</p>
+              <div class="result-row">
+                <div><span class="result-value">92.39%</span><span class="result-label">모기 종 A 테스트 정확도 · PoC</span></div>
+                <div><span class="result-value">98.12%</span><span class="result-label">모기 종 B 테스트 정확도 · PoC</span></div>
+              </div>
+              <a class="text-link" href="#experience-02" data-jump="experience-02"><span>View full experience</span><span>↘</span></a>
+            </div>
+            <div class="evidence-panel" aria-label="해바캄 프로젝트 지표">
+              <div class="evidence-block a"><strong>MODEL / POC</strong><span>약 1만 건 날갯짓 데이터<br>모기 2종 분류</span></div>
+              <div class="evidence-block b"><strong>PRODUCT / IP</strong><span>특허 회의 8회<br>유지보수 AX 흐름 구축</span></div>
+              <span class="evidence-line" aria-hidden="true"></span>
+              <span class="evidence-note">Proof of concept · not deployed</span>
+            </div>
+          </article>
+
+          <article class="featured-card" data-featured="2" hidden>
+            <div class="featured-copy">
+              <span class="card-index">Case 03 · Financial AI Research</span>
+              <div class="chip-row"><span class="chip">XBRL</span><span class="chip">RankNet</span><span class="chip">Backtest</span></div>
+              <h3 class="featured-title">회계 왜곡 보정 AI 포트폴리오</h3>
+              <p class="featured-problem">약 5,000만 원의 상용 데이터 없이 SEC EDGAR XBRL과 Yahoo Finance로 파이프라인을 구축하고, 3개 팩터와 RankNet을 결합해 가설을 검증했습니다.</p>
+              <div class="result-row">
+                <div><span class="result-value">31.01%</span><span class="result-label">S&amp;P 500 백테스트 CAGR</span></div>
+                <div><span class="result-value">39 / 975</span><span class="result-label">공동 순위 · 최종 입선</span></div>
+              </div>
+              <a class="text-link" href="#experience-03" data-jump="experience-03"><span>View full experience</span><span>↘</span></a>
+            </div>
+            <div class="evidence-panel" aria-label="DB보험금융공모전 연구 지표">
+              <div class="evidence-block a"><strong>DATA FILTER</strong><span>원시 티커 8,410개<br>분석 기업 328개</span></div>
+              <div class="evidence-block b"><strong>BACKTEST ALPHA</strong><span>S&amp;P 500 대비<br>+21.84%p</span></div>
+              <span class="evidence-line" aria-hidden="true"></span>
+              <span class="evidence-note">Backtest · not live returns</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="blueprint" id="blueprint" aria-labelledby="blueprint-heading">
+      <div class="section-inner content-section">
+        <div class="section-heading-row">
+          <div class="section-heading-group">
+            <p class="eyebrow">How I Build</p>
+            <h2 class="section-title" id="blueprint-heading">Project Blueprint</h2>
+            <p class="section-description">반복해서 사용하는 문제 해결 방식과 협업 구조를 두 개의 축으로 정리합니다.</p>
+          </div>
+          <span class="section-index">02 / 03</span>
+        </div>
+
+        <div class="blueprint-grid">
+          <article class="blueprint-card">
+            <span class="blueprint-no">01</span>
+            <div class="blueprint-content">
+              <span class="blueprint-type">AI-assisted Research Loop</span>
+              <h3 class="blueprint-title">탐색은 AI로 넓히고, 판단은 직접 검증합니다.</h3>
+              <p class="blueprint-desc">문제 정의 → 논문·자료 탐색 → 적용 방법 판단 → Codex 실험 자동화 → Notion 기록 → 성능 비교 → 다음 실험 설계.</p>
+              <a class="text-link" href="#experience-01" data-jump="experience-01"><span>DCASE experience</span><span>→</span></a>
+            </div>
+          </article>
+
+          <article class="blueprint-card">
+            <span class="blueprint-no">02</span>
+            <div class="blueprint-content">
+              <span class="blueprint-type">Evidence-to-Business Loop</span>
+              <h3 class="blueprint-title">의견보다 고객과 지표를 먼저 확인합니다.</h3>
+              <p class="blueprint-desc">관찰·데이터 → 고객 검증 → 타깃·가설 수정 → 실행 → 지표 확인 → 반복 개선. KDB 38명 인터뷰와 커머스 성장에 적용했습니다.</p>
+              <a class="text-link" href="#experience-08" data-jump="experience-08"><span>KDB experience</span><span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section experience" id="experience" aria-labelledby="experience-heading">
+      <div class="section-inner">
+        <div class="section-heading-row">
+          <div class="section-heading-group">
+            <p class="eyebrow">Full Archive</p>
+            <h2 class="section-title" id="experience-heading">Experience Log</h2>
+            <p class="section-description">카드에서 핵심을 훑고, 선택한 경험의 전체 기록을 중앙 상세 화면에서 이어서 봅니다.</p>
+          </div>
+          <span class="section-index">03 / 03</span>
+        </div>
+
+        <div class="experience-grid" id="experience-grid">
+          <article class="experience-card" id="experience-01" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="DCASE 2026 Task 1 전체 경험 보기">
+              <span class="experience-no">01</span>
+              <span><span class="experience-title">DCASE 2026 Task 1</span><span class="experience-meta">Audio AI · Individual Research · 2026.03—07</span><span class="experience-preview">78회 실험과 4개 시스템 제출 · 참가자 기준 8위</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-02" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="해바캄 AI·IoT 제품 고도화 전체 경험 보기">
+              <span class="experience-no">02</span>
+              <span><span class="experience-title">해바캄 AI·IoT 제품 고도화</span><span class="experience-meta">AI Problem Solver · 2025.12—Present</span><span class="experience-preview">해충 종 분류 PoC · 사내 AX · 특허 출원 지원</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-03" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="DB보험금융공모전 전체 경험 보기">
+              <span class="experience-no">03</span>
+              <span><span class="experience-title">DB보험금융공모전</span><span class="experience-meta">Financial AI · Research Lead · 2026.02—05</span><span class="experience-preview">공개 데이터로 회계 왜곡 보정 모델 구축 · 39위/975팀</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-04" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="캠퍼스 특허 유니버시아드 전체 경험 보기">
+              <span class="experience-no">04</span>
+              <span><span class="experience-title">캠퍼스 특허 유니버시아드</span><span class="experience-meta">IP Strategy · Team · 2024.03—09</span><span class="experience-preview">차량 AI 특허 23,767건 분석 · 현대자동차 대표이사상</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-05" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="AI TOP 100 CAMPUS 전체 경험 보기">
+              <span class="experience-no">05</span>
+              <span><span class="experience-title">AI TOP 100 CAMPUS</span><span class="experience-meta">AI Problem Solving · Individual · 2026.03—04</span><span class="experience-preview">약 3,000명 중 상위 100명 파이널리스트</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-06" data-page="0">
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="한라산쑥떡 쿠팡 성장 전체 경험 보기">
+              <span class="experience-no">06</span>
+              <span><span class="experience-title">한라산쑥떡 쿠팡 성장</span><span class="experience-meta">Commerce Growth · Operator · 2025.01—2026.07</span><span class="experience-preview">검색·VOC 기반 개선 · 2026년 1–7월 매출 1억 300만 원</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-07" data-page="1" hidden>
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="담괴 AI 괴담 Shorts 전체 경험 보기">
+              <span class="experience-no">07</span>
+              <span><span class="experience-title">담괴 AI 괴담 Shorts</span><span class="experience-meta">Content Strategy · Co-creator · 2024.02—07</span><span class="experience-preview">누적 361만 조회 · 128일 만에 구독자 1만 명</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-08" data-page="1" hidden>
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="KDB 고객 인터뷰 피벗 전체 경험 보기">
+              <span class="experience-no">08</span>
+              <span><span class="experience-title">KDB 고객 인터뷰 피벗</span><span class="experience-meta">Customer Discovery · School Representative · 2023.09—12</span><span class="experience-preview">38명 대면 인터뷰 · 20개 학교 대표팀 중 1위</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-09" data-page="1" hidden>
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="ARA AI 학습 서비스 전체 경험 보기">
+              <span class="experience-no">09</span>
+              <span><span class="experience-title">ARA AI 학습 서비스</span><span class="experience-meta">Product Planning · Team Lead/Member · 2024.01—2025.06</span><span class="experience-preview">최우수 창업동아리 · KDB STARTUP VILLAGE 선발</span></span>
+            </button>
+          </article>
+
+          <article class="experience-card" id="experience-10" data-page="1" hidden>
+            <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="개인 구매대행 사업 전체 경험 보기">
+              <span class="experience-no">10</span>
+              <span><span class="experience-title">개인 구매대행 사업</span><span class="experience-meta">Founder · Solo Operation · 2020—2023</span><span class="experience-preview">10개 오픈마켓 · 누적 매출 1억 5,000만 원</span></span>
+            </button>
+          </article>
+        </div>
+
+        <div class="pagination" role="group" aria-label="경험 목록 페이지">
+          <button class="control" id="experience-prev" type="button" aria-label="이전 경험 페이지">←</button>
+          <button class="page-dot is-active" type="button" data-page-button="0" aria-label="경험 1페이지" aria-current="page">01</button>
+          <button class="page-dot" type="button" data-page-button="1" aria-label="경험 2페이지">02</button>
+          <button class="control" id="experience-next" type="button" aria-label="다음 경험 페이지">→</button>
+        </div>
+
+        <dialog class="experience-modal" id="experience-dialog" aria-labelledby="experience-dialog-title" aria-describedby="experience-dialog-summary">
+          <div class="modal-shell">
+            <header class="modal-header">
+              <span class="modal-index" id="experience-dialog-index">01</span>
+              <div>
+                <h3 class="modal-title" id="experience-dialog-title" tabindex="-1">Experience</h3>
+                <span class="modal-card-meta" id="experience-dialog-meta"></span>
+              </div>
+              <button class="modal-close" id="experience-dialog-close" type="button" aria-label="경험 상세 닫기">×</button>
+            </header>
+            <div class="modal-scroll" id="experience-dialog-scroll">
+              <p class="modal-summary" id="experience-dialog-summary"></p>
+              <div id="experience-dialog-content"></div>
+            </div>
+            <footer class="modal-footer">
+              <button class="modal-nav-button" id="experience-dialog-prev" type="button"><span aria-hidden="true">←</span><span class="modal-nav-label">Previous</span></button>
+              <span class="modal-status" id="experience-dialog-status" aria-live="polite">01 / 10</span>
+              <button class="modal-nav-button next" id="experience-dialog-next" type="button"><span class="modal-nav-label">Next</span><span aria-hidden="true">→</span></button>
+            </footer>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-title">Kil Mingyu — Hackathon Portfolio</span>
+      <span class="footer-meta">AI Research · Product · Business · 2026</span>
+    </div>
+  </footer>
+
+  <script src="experience-log-data.js"></script>
+  <script>
+    (() => {
+      const featuredCards = [...document.querySelectorAll('[data-featured]')];
+      const featuredCurrent = document.querySelector('#featured-current');
+      const featuredTotal = document.querySelector('#featured-total');
+      const featuredPrev = document.querySelector('#featured-prev');
+      const featuredNext = document.querySelector('#featured-next');
+      let featuredIndex = 0;
+
+      const formatNumber = (number) => String(number).padStart(2, '0');
+
+      const renderFeatured = () => {
+        featuredCards.forEach((card, index) => {
+          card.hidden = index !== featuredIndex;
+        });
+        featuredCurrent.textContent = formatNumber(featuredIndex + 1);
+        featuredTotal.textContent = formatNumber(featuredCards.length);
+        featuredPrev.disabled = featuredIndex === 0;
+        featuredNext.disabled = featuredIndex === featuredCards.length - 1;
+      };
+
+      featuredPrev.addEventListener('click', () => {
+        featuredIndex = Math.max(0, featuredIndex - 1);
+        renderFeatured();
+      });
+
+      featuredNext.addEventListener('click', () => {
+        featuredIndex = Math.min(featuredCards.length - 1, featuredIndex + 1);
+        renderFeatured();
+      });
+
+      const experienceCards = [...document.querySelectorAll('.experience-card')];
+      const experienceData = Array.isArray(window.EXPERIENCE_LOG_DATA) ? window.EXPERIENCE_LOG_DATA : [];
+      const experienceDataById = new Map(experienceData.map((item) => [item.id, item]));
+      const pageButtons = [...document.querySelectorAll('[data-page-button]')];
+      const experiencePrev = document.querySelector('#experience-prev');
+      const experienceNext = document.querySelector('#experience-next');
+      const experienceDialog = document.querySelector('#experience-dialog');
+      const dialogIndex = document.querySelector('#experience-dialog-index');
+      const dialogTitle = document.querySelector('#experience-dialog-title');
+      const dialogMeta = document.querySelector('#experience-dialog-meta');
+      const dialogSummary = document.querySelector('#experience-dialog-summary');
+      const dialogContent = document.querySelector('#experience-dialog-content');
+      const dialogScroll = document.querySelector('#experience-dialog-scroll');
+      const dialogClose = document.querySelector('#experience-dialog-close');
+      const dialogPrev = document.querySelector('#experience-dialog-prev');
+      const dialogNext = document.querySelector('#experience-dialog-next');
+      const dialogStatus = document.querySelector('#experience-dialog-status');
+      let experiencePage = 0;
+      let activeExperienceIndex = 0;
+      let returnFocusElement = null;
+      let restoreFocusOnClose = true;
+      const maxExperiencePage = Math.max(...experienceCards.map((card) => Number(card.dataset.page)));
+
+      const renderExperiencePage = () => {
+        experienceCards.forEach((card) => {
+          card.hidden = Number(card.dataset.page) !== experiencePage;
+        });
+        pageButtons.forEach((button) => {
+          const isCurrent = Number(button.dataset.pageButton) === experiencePage;
+          button.classList.toggle('is-active', isCurrent);
+          if (isCurrent) {
+            button.setAttribute('aria-current', 'page');
+          } else {
+            button.removeAttribute('aria-current');
+          }
+        });
+        experiencePrev.disabled = experiencePage === 0;
+        experienceNext.disabled = experiencePage === maxExperiencePage;
+      };
+
+      pageButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          experiencePage = Number(button.dataset.pageButton);
+          renderExperiencePage();
+        });
+      });
+
+      experiencePrev.addEventListener('click', () => {
+        experiencePage = Math.max(0, experiencePage - 1);
+        renderExperiencePage();
+      });
+
+      experienceNext.addEventListener('click', () => {
+        experiencePage = Math.min(maxExperiencePage, experiencePage + 1);
+        renderExperiencePage();
+      });
+
+      const findHashExperience = () => {
+        const target = window.location.hash
+          ? document.getElementById(window.location.hash.slice(1))
+          : null;
+        return target?.classList.contains('experience-card') ? target : null;
+      };
+
+      const createElement = (tagName, className, text) => {
+        const element = document.createElement(tagName);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
+      };
+
+      const splitStoryIntoSentences = (story) => {
+        const normalized = String(story || '').trim();
+        if (!normalized) return [];
+
+        if (typeof Intl.Segmenter === 'function') {
+          return [...new Intl.Segmenter('ko', { granularity: 'sentence' }).segment(normalized)]
+            .map(({ segment }) => segment.trim())
+            .filter(Boolean);
+        }
+
+        return normalized.split(/(?<=[.!?])\s+/).map((sentence) => sentence.trim()).filter(Boolean);
+      };
+
+      const appendChipSection = (container, heading, items, variant = '') => {
+        if (!Array.isArray(items) || items.length === 0) return;
+        container.append(createElement('h5', 'modal-section-heading', heading));
+        const list = createElement('ul', `modal-chip-list${variant ? ` ${variant}` : ''}`);
+        items.forEach((item) => list.append(createElement('li', '', item)));
+        container.append(list);
+      };
+
+      const renderSourceRecord = (record, sourceIndex, sourceTotal) => {
+        const source = createElement('article', 'modal-source');
+        const label = sourceTotal > 1
+          ? `Experience Record ${formatNumber(sourceIndex + 1)} / ${formatNumber(sourceTotal)}`
+          : 'Experience Record';
+        source.append(createElement('span', 'modal-source-label', label));
+        source.append(createElement('h4', 'modal-source-title', record.activity));
+
+        const meta = createElement('dl', 'modal-meta-grid');
+        [
+          ['Period', record.period],
+          ['Institution', record.institution || '—'],
+          ['Role', record.role]
+        ].forEach(([term, description]) => {
+          const item = createElement('div', 'modal-meta-item');
+          item.append(createElement('dt', '', term), createElement('dd', '', description));
+          meta.append(item);
+        });
+        source.append(meta);
+
+        appendChipSection(source, 'Metrics', record.metrics, 'metrics');
+
+        source.append(createElement('h5', 'modal-section-heading', 'Full Story'));
+        const story = createElement('div', 'modal-story');
+        splitStoryIntoSentences(record.story).forEach((sentence) => {
+          story.append(createElement('p', '', sentence));
+        });
+        source.append(story);
+
+        appendChipSection(source, 'Skills', record.skills);
+        appendChipSection(source, 'Categories', record.categories);
+        return source;
+      };
+
+      const highlightExperienceCard = (target) => {
+        experienceCards.forEach((card) => card.classList.remove('is-targeted'));
+        target.classList.add('is-targeted');
+        window.setTimeout(() => target.classList.remove('is-targeted'), 1800);
+      };
+
+      const renderExperienceDialog = (index, { focusTitle = false } = {}) => {
+        const target = experienceCards[index];
+        const data = experienceDataById.get(target.id);
+        const trigger = target.querySelector('.experience-trigger');
+        const title = target.querySelector('.experience-title')?.textContent || 'Experience';
+        const meta = target.querySelector('.experience-meta')?.textContent || '';
+        const summary = target.querySelector('.experience-preview')?.textContent || '';
+
+        activeExperienceIndex = index;
+        returnFocusElement = trigger;
+        experiencePage = Number(target.dataset.page);
+        renderExperiencePage();
+        highlightExperienceCard(target);
+
+        dialogIndex.textContent = formatNumber(index + 1);
+        dialogTitle.textContent = title;
+        dialogMeta.textContent = meta;
+        dialogSummary.textContent = summary;
+        dialogStatus.textContent = `${formatNumber(index + 1)} / ${formatNumber(experienceCards.length)}`;
+        dialogPrev.disabled = index === 0;
+        dialogNext.disabled = index === experienceCards.length - 1;
+        dialogPrev.setAttribute('aria-label', index > 0
+          ? `이전 경험: ${experienceCards[index - 1].querySelector('.experience-title')?.textContent}`
+          : '이전 경험 없음');
+        dialogNext.setAttribute('aria-label', index < experienceCards.length - 1
+          ? `다음 경험: ${experienceCards[index + 1].querySelector('.experience-title')?.textContent}`
+          : '다음 경험 없음');
+
+        const records = data?.records || [];
+        dialogContent.replaceChildren(...records.map((record, recordIndex) => (
+          renderSourceRecord(record, recordIndex, records.length)
+        )));
+        dialogScroll.scrollTop = 0;
+
+        if (focusTitle) requestAnimationFrame(() => dialogTitle.focus({ preventScroll: true }));
+      };
+
+      const openExperience = (target, { historyMode = 'push', scrollCard = false, focusTitle = true } = {}) => {
+        const index = experienceCards.indexOf(target);
+        if (index < 0) return;
+
+        renderExperienceDialog(index, { focusTitle: false });
+        if (scrollCard) {
+          target.scrollIntoView({ behavior: 'auto', block: 'center' });
+        }
+
+        if (historyMode === 'push') history.pushState({ experience: target.id }, '', `#${target.id}`);
+        if (historyMode === 'replace') history.replaceState({ experience: target.id }, '', `#${target.id}`);
+
+        if (!experienceDialog.open) {
+          experienceDialog.showModal();
+          document.body.classList.add('modal-open');
+        }
+        if (focusTitle) requestAnimationFrame(() => dialogTitle.focus({ preventScroll: true }));
+      };
+
+      const closeExperience = ({ updateHash = true, restoreFocus = true } = {}) => {
+        if (!experienceDialog.open) return;
+        restoreFocusOnClose = restoreFocus;
+        if (updateHash) history.replaceState(null, '', '#experience');
+        experienceDialog.close();
+      };
+
+      experienceCards.forEach((card) => {
+        card.querySelector('.experience-trigger')?.addEventListener('click', () => {
+          openExperience(card);
+        });
+      });
+
+      dialogPrev.addEventListener('click', () => {
+        if (activeExperienceIndex === 0) return;
+        openExperience(experienceCards[activeExperienceIndex - 1], { historyMode: 'replace', focusTitle: false });
+      });
+
+      dialogNext.addEventListener('click', () => {
+        if (activeExperienceIndex === experienceCards.length - 1) return;
+        openExperience(experienceCards[activeExperienceIndex + 1], { historyMode: 'replace', focusTitle: false });
+      });
+
+      dialogClose.addEventListener('click', () => closeExperience());
+
+      experienceDialog.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        closeExperience();
+      });
+
+      experienceDialog.addEventListener('click', (event) => {
+        if (event.target === experienceDialog) closeExperience();
+      });
+
+      experienceDialog.addEventListener('close', () => {
+        document.body.classList.remove('modal-open');
+        if (restoreFocusOnClose) returnFocusElement?.focus({ preventScroll: true });
+        restoreFocusOnClose = true;
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (!experienceDialog.open || event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.target instanceof Element && event.target.closest('button, a, input, textarea, select, [contenteditable="true"]')) return;
+        if (event.key === 'ArrowLeft' && activeExperienceIndex > 0) {
+          event.preventDefault();
+          openExperience(experienceCards[activeExperienceIndex - 1], { historyMode: 'replace', focusTitle: false });
+        }
+        if (event.key === 'ArrowRight' && activeExperienceIndex < experienceCards.length - 1) {
+          event.preventDefault();
+          openExperience(experienceCards[activeExperienceIndex + 1], { historyMode: 'replace', focusTitle: false });
+        }
+      });
+
+      document.querySelectorAll('[data-jump]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = document.getElementById(link.dataset.jump);
+          if (!target) return;
+          openExperience(target, { scrollCard: true });
+        });
+      });
+
+      const syncExperienceFromHash = () => {
+        const target = findHashExperience();
+        if (target) {
+          openExperience(target, { historyMode: 'none', focusTitle: false });
+        } else if (experienceDialog.open) {
+          closeExperience({ updateHash: false, restoreFocus: false });
+        }
+      };
+
+      window.addEventListener('popstate', syncExperienceFromHash);
+      window.addEventListener('hashchange', syncExperienceFromHash);
+
+      const navigationLinks = [...document.querySelectorAll('.nav-link')];
+      const observedSections = ['about', 'featured', 'blueprint', 'experience']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      const setActiveNavigation = (sectionId) => {
+        navigationLinks.forEach((link) => {
+          const isActive = link.dataset.section === sectionId;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveNavigation(visible.target.id);
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, 0.1, 0.3] });
+
+      observedSections.forEach((section) => observer.observe(section));
+
+      renderFeatured();
+      renderExperiencePage();
+      const initialTarget = findHashExperience();
+      if (initialTarget) openExperience(initialTarget, { historyMode: 'none' });
+    })();
+  </script>
+</body>
+</html>
