@@ -1,2 +1,2 @@
 # hackathon-portfolio
-Startup hackathon portfolio — Kil Mingyu
+Startup hackathon portfolio — Kil Minkyu
