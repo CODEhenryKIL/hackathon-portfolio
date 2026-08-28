@@ -270,7 +270,7 @@
       text-transform: uppercase;
     }
 
-    .award-heading {
+    .sidebar-heading {
       display: flex;
       justify-content: space-between;
       margin: 25px 0 10px;
@@ -278,6 +278,33 @@
       font: 500 9px/1.4 var(--mono);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .sidebar-career-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .sidebar-career-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar-career-list .fact-title {
+      font-size: 11px;
+    }
+
+    .sidebar-career-list .fact-desc {
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .sidebar-career-list .fact-period {
+      font-size: 8px;
     }
 
     .award-list {
@@ -315,6 +342,19 @@
       color: var(--muted);
       font-size: 9px;
       line-height: 1.55;
+    }
+
+    .award-list-wide .award-item {
+      grid-template-columns: 46px minmax(0, 1fr);
+      padding: 13px 0;
+    }
+
+    .award-list-wide .award-title {
+      font-size: 12px;
+    }
+
+    .award-list-wide .award-desc {
+      font-size: 10px;
     }
 
     .profile-links {
@@ -1294,7 +1334,7 @@
 
       .portrait {
         width: 128px;
-        grid-row: span 3;
+        grid-row: auto;
         padding: 0;
       }
 
@@ -1303,12 +1343,12 @@
         font-size: 21px;
       }
 
-      .award-section,
+      .sidebar-career,
       .profile-links {
         grid-column: 1 / -1;
       }
 
-      .award-section,
+      .sidebar-career,
       .profile-links {
         width: 100%;
         margin-right: auto;
@@ -1518,22 +1558,20 @@
             <p class="profile-name">길민규</p>
             <p class="profile-role">AI Problem Solver · Product Builder</p>
             <ul class="contact-list">
-              <li class="contact-row"><span class="meta-label">Based</span><span>Seoul, Korea</span></li>
-              <li class="contact-row"><span class="meta-label">Current</span><span>해바캄 · AI응용학과 연구실</span></li>
-              <li class="contact-row"><span class="meta-label">Focus</span><span>AI Product · Research · Business</span></li>
+              <li class="contact-row"><span class="meta-label">School</span><span>서울과학기술대학교</span></li>
+              <li class="contact-row"><span class="meta-label">Major</span><span>벤처경영학과 · 컴퓨터공학과 복수전공</span></li>
+              <li class="contact-row"><span class="meta-label">GPA</span><span class="fact-highlight">4.26 / 4.50</span></li>
             </ul>
           </div>
-          <section class="award-section" aria-labelledby="award-heading">
-            <div class="award-heading" id="award-heading"><span>Awards</span><span>07 Selected</span></div>
-            <ol class="award-list">
-              <li class="award-item"><span class="award-year">2023</span><span><span class="award-title">KDB 산업은행 회장상</span><span class="award-desc">교내 창업교육 1위 · 20개 학교 대표팀 중 1위</span></span></li>
-              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">현대자동차 대표이사상</span><span class="award-desc">차량 AI 특허 23,767건 → 유효특허 891건</span></span></li>
-              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">IT 퀴즈대회 · 핀테크 BM 금상</span><span class="award-desc">서울과학기술대학교</span></span></li>
-              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">최우수 창업동아리 선정</span><span class="award-desc">STAI · ARA 프로젝트</span></span></li>
-              <li class="award-item"><span class="award-year">25—26</span><span><span class="award-title">단과대 최우수 동아리</span><span class="award-desc">2년 연속 선정 · 2026 중앙동아리 승격</span></span></li>
-              <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">AI TOP 100 파이널리스트</span><span class="award-desc">카카오임팩트 · 약 3,000명 중 상위 100명</span></span></li>
-              <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">DB보험금융공모전 입선</span><span class="award-desc">975개 팀 중 공동 39위</span></span></li>
-            </ol>
+          <section class="sidebar-career" aria-labelledby="sidebar-career-heading">
+            <div class="sidebar-heading" id="sidebar-career-heading"><span>Experience</span><span>05 Roles</span></div>
+            <ul class="sidebar-career-list">
+              <li><span class="fact-title">주식회사 해바캄 · AI Problem Solver</span><span class="fact-desc">해충 종 분류 AI PoC · 사내 AX · 특허 출원 지원</span><span class="fact-period">2025.12 — PRESENT</span></li>
+              <li><span class="fact-title">AI응용학과 연구실 · 학부연구생</span><span class="fact-desc">DCASE 2026 Task 1 오디오 AI 개인 연구</span><span class="fact-period">2026.01 — PRESENT</span></li>
+              <li><span class="fact-title">개인 구매대행 사업 · 대표</span><span class="fact-desc">10개 오픈마켓 · 누적 매출 1억 5,000만 원</span><span class="fact-period">2020 — 2023</span></li>
+              <li><span class="fact-title">주식회사 세경인프라</span><span class="fact-desc">상품 입출고 · 재고 및 전표 관리</span><span class="fact-period">2020.06 — 2021.03</span></li>
+              <li><span class="fact-title">주식회사 우앤이</span><span class="fact-desc">ERP · 부품 발주·검수 · 매장 운영</span><span class="fact-period">2017.03 — 2018.07</span></li>
+            </ul>
           </section>
           <div class="profile-links">
             <a class="small-link" href="#featured"><span>Projects</span><span>↘</span></a>
@@ -1548,35 +1586,16 @@
 
           <div class="facts-grid">
             <div>
-              <section class="fact-group" aria-labelledby="career-heading">
-                <h2 class="fact-heading" id="career-heading">Experience</h2>
-                <ul class="fact-list">
-                  <li>
-                    <span class="fact-title">주식회사 해바캄 · AI Problem Solver</span>
-                    <span class="fact-desc">해충 종 분류 AI PoC, 사내 AX, AI 특허 출원 지원</span>
-                    <span class="fact-period">2025.12 — PRESENT</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">AI응용학과 연구실 · 학부연구생</span>
-                    <span class="fact-desc">DCASE 2026 Task 1 오디오 AI 개인 연구</span>
-                    <span class="fact-period">2026.01 — PRESENT</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">개인 구매대행 사업 · 대표</span>
-                    <span class="fact-desc">10개 오픈마켓 운영 · 누적 매출 1억 5,000만 원</span>
-                    <span class="fact-period">약 3년 10개월 · 2020 — 2023</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">주식회사 세경인프라</span>
-                    <span class="fact-desc">공구 상품 입출고 · 재고 및 전표 관리</span>
-                    <span class="fact-period">2020.06 — 2021.03</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">주식회사 우앤이</span>
-                    <span class="fact-desc">ERP · 부품 발주·검수 · 매장 운영</span>
-                    <span class="fact-period">2017.03 — 2018.07</span>
-                  </li>
-                </ul>
+              <section class="fact-group profile-awards" aria-labelledby="award-heading">
+                <h2 class="fact-heading" id="award-heading">Awards</h2>
+                <ol class="award-list award-list-wide">
+                  <li class="award-item"><span class="award-year">2023</span><span><span class="award-title">KDB 산업은행 회장상</span><span class="award-desc">교내 창업교육 1위 · 20개 학교 대표팀 중 1위</span></span></li>
+                  <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">현대자동차 대표이사상</span><span class="award-desc">차량 AI 특허 23,767건 → 유효특허 891건</span></span></li>
+                  <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">서울과기대 IT 퀴즈대회 1위</span><span class="award-desc">서울과학기술대학교</span></span></li>
+                  <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">서울과기대 최우수 창업동아리 선정</span><span class="award-desc">STAI · ARA 프로젝트</span></span></li>
+                  <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">AI TOP 100 파이널리스트</span><span class="award-desc">카카오임팩트 · 약 3,000명 중 상위 100명</span></span></li>
+                  <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">DB보험금융공모전 입선</span><span class="award-desc">975개 팀 중 공동 39위</span></span></li>
+                </ol>
               </section>
             </div>
 
@@ -1810,7 +1829,7 @@
           <article class="experience-card" id="experience-09" data-page="1" hidden>
             <button class="experience-trigger" type="button" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="ARA AI 학습 서비스 전체 경험 보기">
               <span class="experience-no">09</span>
-              <span><span class="experience-title">ARA AI 학습 서비스</span><span class="experience-meta">Product Planning · Team Lead/Member · 2024.01—2025.06</span><span class="experience-preview">최우수 창업동아리 · KDB STARTUP VILLAGE 선발</span></span>
+              <span><span class="experience-title">ARA AI 학습 서비스</span><span class="experience-meta">Product Planning · Team Lead/Member · 2024.01—2025.06</span><span class="experience-preview">서울과기대 최우수 창업동아리 선정 · KDB STARTUP VILLAGE 선발</span></span>
             </button>
           </article>
 
