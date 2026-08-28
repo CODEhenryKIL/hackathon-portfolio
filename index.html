@@ -2197,9 +2197,24 @@
       window.addEventListener('hashchange', syncExperienceFromHash);
 
       const navigationLinks = [...document.querySelectorAll('.nav-link')];
+      const navigationContainer = document.querySelector('.nav-links');
       const observedSections = ['about', 'featured', 'experience', 'activities', 'education']
         .map((id) => document.getElementById(id))
         .filter(Boolean);
+
+      const keepActiveNavigationVisible = (link) => {
+        if (!navigationContainer || navigationContainer.scrollWidth <= navigationContainer.clientWidth) return;
+        const containerRect = navigationContainer.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        if (linkRect.left >= containerRect.left && linkRect.right <= containerRect.right) return;
+
+        const centeredOffset = linkRect.left - containerRect.left
+          - ((containerRect.width - linkRect.width) / 2);
+        navigationContainer.scrollTo({
+          left: Math.max(0, navigationContainer.scrollLeft + centeredOffset),
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+      };
 
       const setActiveNavigation = (sectionId) => {
         navigationLinks.forEach((link) => {
@@ -2207,6 +2222,7 @@
           link.classList.toggle('is-active', isActive);
           if (isActive) {
             link.setAttribute('aria-current', 'location');
+            keepActiveNavigationVisible(link);
           } else {
             link.removeAttribute('aria-current');
           }
