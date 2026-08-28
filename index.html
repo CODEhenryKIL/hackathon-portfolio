@@ -713,6 +713,77 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .resume-section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .education-section {
+      background: var(--band);
+    }
+
+    .resume-list {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line-strong);
+      list-style: none;
+    }
+
+    .resume-row {
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr) auto;
+      gap: 26px;
+      align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resume-period {
+      color: var(--muted);
+      font: 500 9px/1.65 var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .resume-period span {
+      display: block;
+    }
+
+    .resume-title {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+    }
+
+    .resume-org {
+      margin: 4px 0 0;
+      color: var(--accent);
+      font: 500 9px/1.5 var(--mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .resume-description {
+      max-width: 700px;
+      margin: 10px 0 0;
+      color: var(--body);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .resume-tag {
+      justify-self: end;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font: 500 8px/1 var(--mono);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
     .experience-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1126,6 +1197,11 @@
       .experience-grid {
         grid-template-columns: 1fr;
       }
+
+      .resume-row {
+        grid-template-columns: 112px minmax(0, 1fr) auto;
+        gap: 18px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1206,6 +1282,31 @@
 
       .facts-grid {
         gap: 30px;
+      }
+
+      .resume-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 22px 0;
+      }
+
+      .resume-period {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 6px;
+      }
+
+      .resume-period span {
+        display: inline;
+      }
+
+      .resume-tag {
+        justify-self: start;
+        margin-top: 4px;
+      }
+
+      .resume-description {
+        margin-top: 8px;
       }
 
       .section-heading-row {
@@ -1331,6 +1432,8 @@
         <a class="nav-link is-active" href="#about" data-section="about" aria-current="location">About</a>
         <a class="nav-link" href="#featured" data-section="featured">Featured</a>
         <a class="nav-link" href="#experience" data-section="experience">Experience</a>
+        <a class="nav-link" href="#activities" data-section="activities">Activities</a>
+        <a class="nav-link" href="#education" data-section="education">Education</a>
       </div>
     </div>
   </nav>
@@ -1352,10 +1455,13 @@
             </ul>
           </div>
           <section class="award-section" aria-labelledby="award-heading">
-            <div class="award-heading" id="award-heading"><span>Awards</span><span>04 Selected</span></div>
+            <div class="award-heading" id="award-heading"><span>Awards</span><span>07 Selected</span></div>
             <ol class="award-list">
-              <li class="award-item"><span class="award-year">2023</span><span><span class="award-title">KDB 산업은행 회장상</span><span class="award-desc">20개 학교 대표팀 중 1위</span></span></li>
+              <li class="award-item"><span class="award-year">2023</span><span><span class="award-title">KDB 산업은행 회장상</span><span class="award-desc">교내 창업교육 1위 · 20개 학교 대표팀 중 1위</span></span></li>
               <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">현대자동차 대표이사상</span><span class="award-desc">차량 AI 특허 23,767건 → 유효특허 891건</span></span></li>
+              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">IT 퀴즈대회 · 핀테크 BM 금상</span><span class="award-desc">서울과학기술대학교</span></span></li>
+              <li class="award-item"><span class="award-year">2024</span><span><span class="award-title">최우수 창업동아리 선정</span><span class="award-desc">STAI · ARA 프로젝트</span></span></li>
+              <li class="award-item"><span class="award-year">25—26</span><span><span class="award-title">단과대 최우수 동아리</span><span class="award-desc">2년 연속 선정 · 2026 중앙동아리 승격</span></span></li>
               <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">AI TOP 100 파이널리스트</span><span class="award-desc">카카오임팩트 · 약 3,000명 중 상위 100명</span></span></li>
               <li class="award-item"><span class="award-year">2026</span><span><span class="award-title">DB보험금융공모전 입선</span><span class="award-desc">975개 팀 중 공동 39위</span></span></li>
             </ol>
@@ -1373,32 +1479,6 @@
 
           <div class="facts-grid">
             <div>
-              <section class="fact-group" aria-labelledby="education-heading">
-                <h2 class="fact-heading" id="education-heading">Education</h2>
-                <ul class="fact-list">
-                  <li>
-                    <span class="fact-title">서울과학기술대학교</span>
-                    <span class="fact-desc">벤처경영학과 · 컴퓨터공학과 복수전공<br><span class="fact-highlight">GPA 4.26 / 4.50</span></span>
-                    <span class="fact-period">2022.03 — 2027.02 예정</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">국민대학교 초기투자 심사역 양성과정</span>
-                    <span class="fact-desc">K-TOPIK 기반 투자심사보고서 작성·발표, 전 과정 수료</span>
-                    <span class="fact-period">2025.08</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">KDB 스타트업 프로그램</span>
-                    <span class="fact-desc">고객 발굴·문제 정의·가설 수립·인터뷰 검증 및 사업모델 피벗 교육<br>20개 학교 대표팀 중 1위 · KDB 산업은행 회장상</span>
-                    <span class="fact-period">2023.09 — 2023.12</span>
-                  </li>
-                  <li>
-                    <span class="fact-title">2025 KDB STARTUP VILLAGE CHALLENGE</span>
-                    <span class="fact-desc">스타트업 투자·지분 구조·주주간계약·초기 고객 확보 교육<br>ARA 시연용 MVP·IR 제작 · NextRise 데모데이 발표</span>
-                    <span class="fact-period">2025.05 — 2025.06</span>
-                  </li>
-                </ul>
-              </section>
-
               <section class="fact-group" aria-labelledby="career-heading">
                 <h2 class="fact-heading" id="career-heading">Experience</h2>
                 <ul class="fact-list">
@@ -1559,7 +1639,7 @@
             <h2 class="section-title" id="experience-heading">Experience Log</h2>
             <p class="section-description">카드에서 핵심을 훑고, 선택한 경험의 전체 기록을 중앙 상세 화면에서 이어서 봅니다.</p>
           </div>
-          <span class="section-index">02 / 02</span>
+          <span class="section-index">02 / 04</span>
         </div>
 
         <div class="experience-grid" id="experience-grid">
@@ -1662,6 +1742,155 @@
             </footer>
           </div>
         </dialog>
+      </div>
+    </section>
+
+    <section class="content-section resume-section" id="activities" aria-labelledby="activities-heading">
+      <div class="section-inner">
+        <div class="section-heading-row">
+          <div class="section-heading-group">
+            <p class="eyebrow">Leadership &amp; Participation</p>
+            <h2 class="section-title" id="activities-heading">Leadership &amp; Activities</h2>
+            <p class="section-description">조직을 맡아 운영한 경험과 대외 활동·해커톤 참가 기록을 역할과 기여 중심으로 정리했습니다.</p>
+          </div>
+          <span class="section-index">03 / 04</span>
+        </div>
+
+        <ol class="resume-list">
+          <li class="resume-row">
+            <div class="resume-period"><span>2026.08</span><span>— Present</span></div>
+            <div>
+              <h3 class="resume-title">2026 Google Student Ambassador</h3>
+              <p class="resume-org">Google · 대학내일</p>
+              <p class="resume-description">Gemini DAU 향상 마케팅 아이디어 해커톤에 참여하고, Phase 1 캠퍼스 마케팅 기획안 작성·예산 피칭·집행을 진행 중입니다.</p>
+            </div>
+            <span class="resume-tag">Current</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2022.03</span><span>— Present</span></div>
+            <div>
+              <h3 class="resume-title">액티비티 동아리 운영진</h3>
+              <p class="resume-org">서울과학기술대학교</p>
+              <p class="resume-description">회원→부회장→회장→운영진으로 역할을 확장하며 학기당 평균 6회 활동을 기획했습니다. 75명 회원 선발과 운영 구조 설계에 참여하고, 학기 일정 사전 공지와 게스트 참여 방식을 운영 체계로 정착시켰습니다.</p>
+            </div>
+            <span class="resume-tag">Community</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2026</span></div>
+            <div>
+              <h3 class="resume-title">Codex Community Seoul 해커톤 참가</h3>
+              <p class="resume-org">Codex Community Seoul</p>
+              <p class="resume-description">사용자를 대신해 영어로 전화하는 AI 서비스 ‘Dial AI’를 해커톤 프로토타입으로 구현했습니다.</p>
+            </div>
+            <span class="resume-tag">Hackathon</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2026.07</span><span>3 Weeks</span></div>
+            <div>
+              <h3 class="resume-title">KIC Washington D.C. 프로그램 참가</h3>
+              <p class="resume-org">KIC Washington D.C.</p>
+              <p class="resume-description">2인 팀으로 미국 현지 고객 50명을 인터뷰하고, 질문 설계와 인터뷰 인사이트 도출 세션에 참여했습니다.</p>
+            </div>
+            <span class="resume-tag">Field Research</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2024.01</span><span>— 2025.06</span></div>
+            <div>
+              <h3 class="resume-title">STAI / ARA 창업동아리</h3>
+              <p class="resume-org">서울과학기술대학교 창업지원단</p>
+              <p class="resume-description">2024년 팀장, 2025년 팀원으로 AI 학습 보조 서비스를 기획했습니다. 팀 구성·고객 인터뷰·화면 목업·사업계획서·시연용 MVP·IR 제작을 맡았습니다.</p>
+            </div>
+            <span class="resume-tag">Startup</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2024.01</span><span>— 2024.12</span></div>
+            <div>
+              <h3 class="resume-title">벤처경영학과 학생회장</h3>
+              <p class="resume-org">서울과학기술대학교</p>
+              <p class="resume-description">조직·행사·회계·학생자치 운영을 총괄했습니다. 참여 구조를 재설계해 학과 행사 참여 인원을 전년 대비 약 2배로 높였고, 업무 인수인계 체계를 구축해 회계감사 4회를 통과했습니다.</p>
+            </div>
+            <span class="resume-tag">President</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2024</span><span>약 10개월</span></div>
+            <div>
+              <h3 class="resume-title">단과대학 비상대책위원회 집행위원장</h3>
+              <p class="resume-org">서울과학기술대학교</p>
+              <p class="resume-description">5개 부서·약 40명 조직의 운영과 현장 조정을 맡았습니다. 정기회의 11회와 약 200명 체육대회, 약 150명 단과대학의 밤을 운영했습니다. 부서 간 역할 충돌은 합동 TF로 조율하고, 문화국 공백은 내부 인력 재배치와 외부 인력 영입으로 대응했습니다.</p>
+            </div>
+            <span class="resume-tag">Executive</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2023</span><span>— 2024</span></div>
+            <div>
+              <h3 class="resume-title">인액터스 소셜벤처 동아리</h3>
+              <p class="resume-org">Enactus · 서울과학기술대학교</p>
+              <p class="resume-description">소셜벤처 아이템 기획, 프로토타이핑, 고객 인터뷰 활동에 참여했습니다.</p>
+            </div>
+            <span class="resume-tag">Social Venture</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2023.12.03</span><span>— 12.04</span></div>
+            <div>
+              <h3 class="resume-title">뤼튼 × Microsoft 생성형 AI 아이디어톤</h3>
+              <p class="resume-org">뤼튼테크놀로지스 · Microsoft</p>
+              <p class="resume-description">본선 참가자로 어린이용 RAG 학습 챗봇과 장기 사용자 락인 전략을 1박 2일 안에 기획·발표했습니다.</p>
+            </div>
+            <span class="resume-tag">Ideathon</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="content-section resume-section education-section" id="education" aria-labelledby="education-heading">
+      <div class="section-inner">
+        <div class="section-heading-row">
+          <div class="section-heading-group">
+            <p class="eyebrow">Academic &amp; Training</p>
+            <h2 class="section-title" id="education-heading">Education</h2>
+            <p class="section-description">학위 과정과 창업·투자 교육을 이수 내용 중심으로 정리했습니다.</p>
+          </div>
+          <span class="section-index">04 / 04</span>
+        </div>
+
+        <ol class="resume-list">
+          <li class="resume-row">
+            <div class="resume-period"><span>2022.03</span><span>— 2027.02 예정</span></div>
+            <div>
+              <h3 class="resume-title">서울과학기술대학교</h3>
+              <p class="resume-org">Venture Management · Computer Science</p>
+              <p class="resume-description">벤처경영학과 주전공 · 컴퓨터공학과 복수전공 · <span class="fact-highlight">GPA 4.26 / 4.50</span></p>
+            </div>
+            <span class="resume-tag">Degree</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2025.08.06</span><span>— 08.22</span></div>
+            <div>
+              <h3 class="resume-title">국민대학교 초기투자 심사역 양성과정</h3>
+              <p class="resume-org">국민대학교</p>
+              <p class="resume-description">K-TOPIK 기반 투자심사보고서 작성과 최종 발표에 참여하고 전 과정을 수료했습니다.</p>
+            </div>
+            <span class="resume-tag">Course</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2025.05</span><span>— 2025.06</span></div>
+            <div>
+              <h3 class="resume-title">2025 KDB STARTUP VILLAGE CHALLENGE</h3>
+              <p class="resume-org">KDB나눔재단 · 한국산업은행 · 한국청년기업가정신재단</p>
+              <p class="resume-description">스타트업 생태계, 투자 단계·지분 구조, 주주간계약, 초기 고객 확보를 학습했습니다. ARA 시연용 MVP와 IR 자료를 제작해 NextRise 데모데이에서 발표했습니다.</p>
+            </div>
+            <span class="resume-tag">Program</span>
+          </li>
+          <li class="resume-row">
+            <div class="resume-period"><span>2023.09</span><span>— 2023.12</span></div>
+            <div>
+              <h3 class="resume-title">KDB 스타트업 프로그램</h3>
+              <p class="resume-org">KDB 산업은행</p>
+              <p class="resume-description">고객 발굴·문제 정의·가설 수립·인터뷰 검증을 학습하고, 38명 대면 인터뷰를 바탕으로 사업 아이템과 타깃 고객을 피벗했습니다.</p>
+            </div>
+            <span class="resume-tag">Program</span>
+          </li>
+        </ol>
       </div>
     </section>
   </main>
@@ -1968,7 +2197,7 @@
       window.addEventListener('hashchange', syncExperienceFromHash);
 
       const navigationLinks = [...document.querySelectorAll('.nav-link')];
-      const observedSections = ['about', 'featured', 'experience']
+      const observedSections = ['about', 'featured', 'experience', 'activities', 'education']
         .map((id) => document.getElementById(id))
         .filter(Boolean);
 
